@@ -6,6 +6,15 @@ Course Unit: Machine Learning
 Submission Date: July 12, 2025  
 Author: Carllos Watts-Nogueira
 
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen.svg)
+![Model Accuracy](https://img.shields.io/badge/Accuracy-97%25-success.svg)
+![ML Task](https://img.shields.io/badge/Task-Classification%20%26%20Clustering-orange.svg)
+![Imbalance Handling](https://img.shields.io/badge/SMOTE-Enabled-lightgrey.svg)
+![Dashboard](https://img.shields.io/badge/Streamlit-Dashboard-red.svg)
+![Made with ❤️](https://img.shields.io/badge/Made%20with-%E2%9D%A4-red.svg)
+
 ## Objective
 To predict employee attrition using historical HR data and deliver actionable insights for retention planning.
 
