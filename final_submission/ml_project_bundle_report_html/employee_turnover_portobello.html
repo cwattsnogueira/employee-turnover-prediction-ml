@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Turnover Prediction — Portobello Tech</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+    h1, h2, h3 { color: #2c3e50; }
+    ul { margin-left: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+    img { max-width: 100%; margin: 10px 0; }
+    .badges img { margin-right: 5px; }
+    pre { background: #f9f9f9; padding: 10px; border-left: 3px solid #ccc; }
+  </style>
+</head>
+<body>
+
+<h1>Employee Turnover Prediction — Portobello Tech</h1>
+<h2>Developed for</h2>
+<p>University of San Diego — AI/ML Bootcamp (Powered by Fullstack Academy)</p>
+<p><strong>Course Unit:</strong> Machine Learning</p>
+<p><strong>Submission Date:</strong> July 12, 2025</p>
+<p><strong>Author:</strong> Carllos Watts-Nogueira</p>
+
+<h2> Objective</h2>
+<p>To predict employee attrition using historical HR data and deliver actionable insights for retention planning.</p>
+
+<h2> Overview</h2>
+<p>This project uses machine learning to predict employee turnover at Portobello Tech. By analyzing HR data, we identify at-risk employees and recommend retention strategies.</p>
+
+<h2> Problem Scenario</h2>
+<p>The dataset includes satisfaction scores, evaluation ratings, project counts, monthly working hours, and salary levels.</p>
+
+<h2> Data Quality Checks</h2>
+<ul>
+  <li>No missing values</li>
+  <li>3008 duplicate rows removed</li>
+  <li>Categorical columns renamed (e.g., <code>sales → department</code>)</li>
+</ul>
+
+<h2> Exploratory Data Analysis (EDA)</h2>
+<p><strong>Correlation Heatmap:</strong></p>
+<img src="correlation_matrix_heatmap.png" alt="Correlation Heatmap">
+
+<pre>
+A correlation heatmap revealed strong relationships between satisfaction level and turnover.
+</pre>
+
+<p><strong>Distribution Plots:</strong></p>
+<img src="Satisfaction_level_distribution.png" alt="Satisfaction">
+<img src="Last_evaluation_distribution.png" alt="Evaluation">
+<img src="Average_monthly_hours_distribution.png" alt="Monthly Hours">
+
+<pre>
+Distribution plots showed skewness and outliers in satisfaction, evaluation, and monthly hours.
+</pre>
+
+<p><strong>Project Count vs Turnover:</strong></p>
+<img src="project_count_turnover.png" alt="Project Count">
+
+<pre>
+A bar plot of project count vs turnover highlighted workload imbalance among employees who left.
+</pre>
+
+<h2> Feature Engineering</h2>
+<table>
+  <caption><strong>Feature Set Summary</strong></caption>
+  <tr><th>Dataset Version</th><th>Description</th><th>Variable Name</th></tr>
+  <tr><td>Original</td><td>One-hot encoded, unscaled</td><td>X</td></tr>
+  <tr><td>Interaction Features</td><td>PolynomialFeatures</td><td>X_poly</td></tr>
+  <tr><td>Standardized</td><td>Zero mean, unit variance</td><td>X_scaled</td></tr>
+  <tr><td>Outlier-Clipped</td><td>Clipped using IQR</td><td>X_clipped</td></tr>
+</table>
+
+<h2> Clustering Analysis</h2>
+<p><strong>Elbow Method:</strong></p>
+<img src="elbow_method_optimal_k.png" alt="Elbow Method">
+
+<p><strong>KMeans Clustering:</strong></p>
+<img src="kmeans_clustering_employees_left.png" alt="KMeans Clustering">
+
+<ul>
+  <li>Cluster 0: High evaluation, low satisfaction</li>
+  <li>Cluster 1: High satisfaction and evaluation</li>
+  <li>Cluster 2: Low satisfaction, average evaluation</li>
+</ul>
+
+<h2> Handling Class Imbalance</h2>
+
+<ul>
+  <li>Applied SMOTE to balance the training set.</li>
+  <li>sm.fit_resample(X_train, y_train)</li>
+</ul>
+
+<pre>
+Original:
+left
+0    7999
+1    1593
+
+Resampled:
+left
+0    7999
+1    7999
+</pre>
+
+<h2> Model Training and Evaluation</h2>
+<p><strong>ROC Curves:</strong></p>
+<img src="roc_curves.png" alt="ROC Curves">
+
+<p><strong>Confusion Matrices:</strong></p>
+<img src="confusion_matrix_logistic_regression.png" alt="Logistic Regression">
+<img src="confusion_matrix_random_forest.png" alt="Random Forest">
+<img src="confusion_matrix_gradient_boosting.png" alt="Gradient Boosting">
+
+<table>
+  <caption><strong>Model Comparison</strong></caption>
+  <tr><th>Model</th><th>FP</th><th>FN</th><th>TP</th><th>AUC</th></tr>
+  <tr><td>Logistic Regression</td><td>356</td><td>134</td><td>264</td><td>0.80</td></tr>
+  <tr><td>Random Forest</td><td>23</td><td>39</td><td>359</td><td>0.97</td></tr>
+  <tr><td>Gradient Boosting</td><td>57</td><td>32</td><td>366</td><td>0.98</td></tr>
+</table>
+
+<pre>
+joblib.dump(best_model, 'best_model_gradient_boosting.pkl')
+</pre>
+
+<h2> Retention Strategy by Risk Zone</h2>
+<img src="risk_zone_distribution.png" alt="Risk Zone Distribution">
+
+<table>
+  <tr><th>Zone</th><th>Score Range</th><th>Strategy</th></tr>
+  <tr><td>Green</td><td>< 20%</td><td>Maintain engagement</td></tr>
+  <tr><td>Yellow</td><td>20–60%</td><td>Monitor and support</td></tr>
+  <tr><td>Orange</td><td>60–90%</td><td>Targeted interventions</td></tr>
+  <tr><td>Red</td><td>> 90%</td><td>Immediate action</td></tr>
+</table>
+
+<h2> Business Impact</h2>
+<ul>
+  <li>Reduces recruitment costs</li>
+  <li>Preserves team stability</li>
+  <li>Enables proactive HR decisions</li>
+</ul>
+
+</body>
+</html>
