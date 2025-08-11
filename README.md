@@ -104,7 +104,7 @@ pip install -r requirements.txt
 streamlit run dashboards/turnover_dashboard.py
 ```
 
-### Final Submission Update — Enhanced Version
+## Final Submission Update — Enhanced Version
 
 This version includes improvements based on review/feedback and rubric alignment:
 
