@@ -102,5 +102,28 @@ pip install -r requirements.txt
 
 # Run dashboard locally
 streamlit run dashboards/turnover_dashboard.py
+```
+
+### Final Submission Update — Enhanced Version
+
+This version includes improvements based on review/feedback and rubric alignment:
+
+- **Elbow Method**: Added to justify optimal clustering (`k=3`)
+- **Feature Engineering Variants**:
+  - Original (One-hot encoded, unscaled)
+  - Interaction Features (`PolynomialFeatures`)
+  - Standardized (`StandardScaler`)
+  - Outlier-Clipped (IQR filtering)
+- **Model Selection**:
+  - Final models saved: `Gradient Boosting` and `Random Forest (Standardized)`
+  - Evaluated using ROC AUC, Precision, Recall, and F1 Score
+- **New Artifacts**:
+  - Updated notebook: `MLFinalUpdate.ipynb`
+  - Script version: `mlfinalupdate.py`
+  - HTML report: `employee_turnover_portobello.html`
+  - Visualizations: clustering, distributions, confusion matrices, ROC curves
+  - Saved models: `best_model_gradient_boosting.pkl`, `best_model_random_forest_standardized.pkl`
+
+All files are located in the `final_submission/` folder.
 
 
