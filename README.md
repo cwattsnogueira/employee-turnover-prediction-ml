@@ -124,6 +124,5 @@ This version includes improvements based on review/feedback and rubric alignment
   - Visualizations: clustering, distributions, confusion matrices, ROC curves
   - Saved models: `best_model_gradient_boosting.pkl`, `best_model_random_forest_standardized.pkl`
 
-All files are located in the `final_submission/` folder.
-
+All files are located in the `final_submission/` folder. [final_submission folder](https://github.com/cwattsnogueira/employee-turnover-prediction-ml/tree/main/final_submission) 
 
